@@ -10,7 +10,7 @@ const client = new Client({
 
 client.once('ready', () => {
   console.log(`Bot ${client.user.tag} is logged in!`);
-    client.user.setPresence({ activities: [{ name: 'Skitzo', type: 'WATCHING' }], status: 'dnd' });// Set the bot's watching status
+    client.user.setPresence({ activities: [{ name: 'Blessed', type: 'WATCHING' }], status: 'dnd' });// Set the bot's watching status
 });
 
 client.on('messageCreate', message => {
