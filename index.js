@@ -3,6 +3,7 @@ const {
     Intents
 } = require('discord.js');
 const { prefix, token } = require('./config.json');
+const port = process.env.PORT || 4000;
 
 const client = new Client({
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGES]
