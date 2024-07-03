@@ -25,5 +25,7 @@ client.on('messageCreate', message => {
     message.channel.send(text);
   }
 });
-
+client.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
 client.login(process.env.token);
