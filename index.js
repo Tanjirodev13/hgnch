@@ -2,7 +2,7 @@ const {
     Client,
     Intents
 } = require('discord.js');
-const keepAliveServer = require('./keep_alive.js');
+
 
 const bot = new Client({
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGES]
