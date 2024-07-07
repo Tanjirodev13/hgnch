@@ -33,6 +33,6 @@ bot.on('ready', () => {
 });
 
 bot.login(process.env.token).then(() => {
-    bot.user.setPresence({ activities: [{ name: 'Rhyme Studios', type: 'WATCHING' }], status: 'idle' });
+    bot.user.setPresence({ activities: [{ name: 'Blessed', type: 'WATCHING' }], status: 'dnd' });
 });
 
