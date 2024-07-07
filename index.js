@@ -2,30 +2,37 @@ const {
     Client,
     Intents
 } = require('discord.js');
-const { prefix, token } = require('./config.json');
-const port = process.env.PORT || 4000;
+const keepAliveServer = require('./keep_alive.js');
 
-const client = new Client({
+const bot = new Client({
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGES]
 });
 
-client.once('ready', () => {
-  console.log(`Bot ${client.user.tag} is logged in!`);
-    client.user.setPresence({ activities: [{ name: 'Blessed', type: 'WATCHING' }], status: 'dnd' });// Set the bot's watching status
+bot.on('guildMemberAdd', (member) => {
+    const channelId = '1197950988057845910'; // The Channel ID you just copied
+    const welcomeMessage = `Hey <@${member.id}>! Welcome to my server!`;
+    member.guild.channels.fetch(channelId).then(channel => {
+        channel.send(welcomeMessage)
+    });
 });
 
-client.on('messageCreate', message => {
-  if (!message.content.startsWith(prefix) || message.author.bot) return;
-
-  const args = message.content.slice(prefix.length).trim().split(/ +/);
-  const command = args.shift().toLowerCase();
-
-  if (command === 'say') {
-    const text = args.join(' ');
-    message.channel.send(text);
-  }
+bot.on('messageCreate', (message) => {
+    if (message.content.toLowerCase() === '!ping') {
+        message.reply('Pong!');
+    }
 });
 
-  console.log(`Example app listening on port ${port}`)
+bot.on('messageCreate', (message) => {
+    if (message.content.toLowerCase().includes('hey bot') || message.content.toLowerCase().includes('damnnnnnnnnnnnnnn')) {
+        message.channel.send('Hello there!');
+    }
+});
 
-client.login(process.env.token);
+bot.on('ready', () => {
+    console.log(`Bot ${bot.user.tag} is logged in!`);
+});
+
+bot.login(process.env.token).then(() => {
+    bot.user.setPresence({ activities: [{ name: 'Rhyme Studios', type: 'WATCHING' }], status: 'idle' });
+});
+
