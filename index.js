@@ -33,6 +33,6 @@ bot.on('ready', () => {
 });
 
 bot.login(process.env.token).then(() => {
-    bot.user.setPresence({ activities: [{ name: 'Blessed', type: 'WATCHING' }], status: 'dnd' });
+    bot.user.setPresence({ activities: [{ name: 'Icixles', type: 'WATCHING' }], status: 'dnd' });
 });
 
